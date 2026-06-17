@@ -162,7 +162,7 @@ model DeliverySettings {
 model SiteConfig {
   id       String @id @default("singleton")
   siteMode String @default("both")
-  siteName String @default("Slice")
+  siteName String @default("Evro Konditeri")
 }
 
 // ─── Customer accounts ────────────────────────────────────────────────────────

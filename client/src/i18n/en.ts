@@ -11,47 +11,47 @@ export const en = {
   },
   home: {
     hero: {
-      tagline: 'Artisan Patisserie',
-      heading: 'Made with flour, butter, and intention.',
-      sub: 'Each cake is baked to order — unhurried, unfussy, and unapologetically good.',
+      tagline: 'Georgian Bakery & Confectionery',
+      heading: 'Fresh from the oven, every day.',
+      sub: 'Khachapuri, chebureki, cakes, and pastries — baked fresh across Tbilisi. Order online for pickup or delivery.',
       cta: 'View the Menu',
       ctaCustom: 'Order a custom cake',
     },
     brand: {
-      heading: 'A cake should taste as good as it looks.',
+      heading: 'Tbilisi\'s favourite bakery, on every corner.',
       body1:
-        'Slice is a one-person patisserie studio built on the belief that a celebration cake should be worth remembering. No frozen sponges, no box mixes. Every layer is baked from scratch using the finest seasonal ingredients.',
+        'Evro Konditeri is a beloved Georgian bakery chain serving fresh khachapuri, chebureki, pastries, and celebration cakes from multiple locations across Tbilisi. Everything is baked daily using quality ingredients — no shortcuts.',
       body2:
-        'Whether it is a towering wedding centrepiece or a birthday cake for twenty, every order receives the same care and attention.',
+        'Whether you need a quick lunch, a box of sweets for guests, or a custom birthday cake — our team is ready to help at any of our branches.',
       link: 'Our story →',
     },
     stats: {
-      cakesCreated: 'Cakes created',
-      leadTime: 'Min. lead time',
-      madeFromScratch: 'Made from scratch',
-      collections: 'Cake collections',
+      cakesCreated: 'Branches in Tbilisi',
+      leadTime: 'Opening hours',
+      madeFromScratch: 'Baked fresh daily',
+      collections: 'Product categories',
     },
     featured: {
-      label: 'Selected Works',
-      heading: 'Featured cakes',
+      label: 'Customer Favourites',
+      heading: 'Popular items',
       viewAll: 'View all →',
-      loadError: 'Could not load cakes at this time.',
+      loadError: 'Could not load products at this time.',
     },
     inspo: {
-      label: 'Made to order',
-      heading: 'Every cake tells a different story.',
+      label: 'Visit us today',
+      heading: 'The taste of home, wherever you are in Tbilisi.',
     },
     cta: {
-      heading: 'Have something in mind?',
-      sub: 'Custom orders are always welcome. Tell us about your event and we will design something together.',
-      button: 'Get in Touch',
+      heading: 'Craving something fresh?',
+      sub: 'Browse our menu, order for pickup or delivery, or visit any of our branches across the city.',
+      button: 'Find a Branch',
     },
   },
   menu: {
-    ourCakes: 'Our Cakes',
+    ourCakes: 'Our Products',
     heading: 'The Menu',
     tagline:
-      'All cakes are made to order. Prices shown are a guide — bespoke sizing, flavours, and decoration are always available on request.',
+      'Fresh khachapuri, chebureki, pastries, and cakes — available daily at all branches. Order online for pickup or delivery across Tbilisi.',
     search: 'Search cakes…',
     all: 'All',
     sort: {
@@ -137,15 +137,17 @@ export const en = {
   },
   contact: {
     tagline: 'Get in Touch',
-    heading: 'Tell us about your celebration.',
+    heading: 'We\'d love to hear from you.',
     body1:
-      'Whether you are planning a wedding, a milestone birthday, or simply want a beautiful cake for a weekend gathering — we would love to hear from you.',
+      'Have a question about our menu, want to place a large order, or need a custom cake for a celebration? Reach out by phone, visit any branch, or send us a message.',
     body2:
-      'Fill in the form and we will get back to you within 48 hours. For seasonal availability, we recommend reaching out at least six weeks in advance.',
-    responseTime: 'Response Time',
-    responseTimeValue: 'Within 48 hours',
-    leadTime: 'Lead Time',
-    leadTimeValue: 'Minimum 6 weeks for custom orders',
+      'We respond to enquiries within one business day. For custom cakes, please allow at least 3–5 days advance notice.',
+    responseTime: 'Phone',
+    responseTimeValue: '+995 597 68 50 50',
+    leadTime: 'Hours',
+    leadTimeValue: 'Daily · 09:00 – 22:00',
+    locationsHeading: 'Our branches',
+    locationsSub: 'Select a branch to see it on the map.',
     form: {
       name: 'Your name',
       email: 'Email address',
@@ -162,37 +164,39 @@ export const en = {
   },
   about: {
     tagline: 'Our Story',
-    heading: 'Baked with patience. Designed with care.',
+    heading: 'European quality. Georgian heart.',
     body1:
-      'Slice began in a small kitchen with one goal: make cakes worth celebrating. Not just visually striking, but genuinely delicious — the kind people talk about for years.',
+      'Evro Konditeri has grown into one of Tbilisi\'s most trusted bakery chains — known for generous khachapuri, crispy chebureki, and cakes that taste as good as they look. Locals queue at our counters every day.',
     body2:
-      'Every recipe has been developed over dozens of test batches. Every design starts with a conversation about you, your event, and what you love.',
+      'From a single shop to multiple branches across the city, our promise has never changed: bake fresh, use quality ingredients, and serve every customer with a smile.',
     body3:
-      'We are a small, deliberately slow operation. That is not a limitation — it is the whole point.',
-    valuesTagline: 'What We Believe',
+      'Whether you visit us for a quick snack or order a custom celebration cake, you\'ll find the same warmth and flavour at every location.',
+    valuesTagline: 'What We Stand For',
     valuesHeading: 'Our values',
     values: [
       {
-        title: 'Made from scratch, always.',
-        body: 'Every sponge, every buttercream, every sugar flower. No shortcuts, no compromises.',
+        title: 'Fresh every morning.',
+        body: 'Our bakers start early so khachapuri, lobiani, and pastries are ready when you arrive — never reheated, never stale.',
       },
       {
-        title: 'Seasonal by instinct.',
-        body: 'We follow the seasons for fruit, flavour, and inspiration. What is ripe right now is what tastes best.',
+        title: 'Generous portions.',
+        body: 'Our chebureki are famous for being packed with filling. Quality and quantity — that\'s the Evro Konditeri way.',
       },
       {
-        title: 'One order at a time.',
-        body: 'Each cake receives our full attention. We limit how many we take on each week so nothing is ever rushed.',
+        title: 'Across Tbilisi.',
+        body: 'Multiple branches mean you\'re never far from fresh bread, hot khachapuri, and something sweet.',
       },
       {
-        title: 'Beauty that is also delicious.',
-        body: 'A cake that looks stunning but tastes underwhelming is a missed opportunity. We refuse to choose.',
+        title: 'For every occasion.',
+        body: 'Daily lunch, weekend treats, birthday cakes, and wedding tiers — we do it all, made to order when you need it.',
       },
     ],
-    galleryLabel: 'From the Studio',
-    ctaHeading: 'Let us make something together.',
-    ctaSub: 'Whether you have a vision or just a date, we are here to help.',
-    ctaButton: 'Start a Conversation',
+    galleryLabel: 'From Our Kitchen',
+    locationsHeading: 'Find us in Tbilisi',
+    locationsSub: 'Tap a branch to see its location on the map.',
+    ctaHeading: 'Come taste the difference.',
+    ctaSub: 'Visit any branch or order online for pickup and delivery.',
+    ctaButton: 'View Menu',
   },
   order: {
     tagline: 'Place an Order',
@@ -303,12 +307,15 @@ export const en = {
     delivery: 'Delivery',
     terms: 'Terms',
     navigateLabel: 'Navigate',
-    contactLabel: 'Get in Touch',
+    contactLabel: 'Contact',
     tagline:
-      'Artisan cakes crafted with intention. Every layer made from scratch, every detail considered.',
+      'Fresh Georgian bakery & confectionery. Khachapuri, chebureki, cakes, and pastries — baked daily across Tbilisi.',
     contactDesc:
-      'Custom orders, wedding consultations, and seasonal collections — we would love to hear from you.',
-    contactCta: 'Send an enquiry →',
+      'Call us, visit a branch, or message us on Facebook. We\'re here every day from 09:00 to 22:00.',
+    contactCta: 'Send a message →',
+    phone: '+995 597 68 50 50',
+    hours: 'Daily · 09:00 – 22:00',
+    facebook: 'Facebook',
     home: 'Home',
   },
   common: {
@@ -436,4 +443,12 @@ export const en = {
   },
 } as const;
 
-export type Translations = typeof en;
+type DeepString<T> = T extends string
+  ? string
+  : T extends readonly (infer U)[]
+    ? ReadonlyArray<DeepString<U>>
+    : T extends object
+      ? { -readonly [K in keyof T]: DeepString<T[K]> }
+      : T;
+
+export type Translations = DeepString<typeof en>;

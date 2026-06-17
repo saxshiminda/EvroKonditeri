@@ -12,7 +12,7 @@ function HeroSection() {
     <section className="relative h-screen min-h-[640px] overflow-hidden">
       <img
         src={SITE_IMAGES.hero}
-        alt="An exquisite mirror-glaze cake"
+        alt="Fresh Georgian bakery display"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-espresso/75 via-espresso/40 to-espresso/10" />
@@ -87,8 +87,8 @@ function StatsStrip() {
   const t = useT();
 
   const stats = [
-    { value: '500+', label: t.home.stats.cakesCreated },
-    { value: '6 weeks', label: t.home.stats.leadTime },
+    { value: '4+', label: t.home.stats.cakesCreated },
+    { value: '09–22', label: t.home.stats.leadTime },
     { value: '100%', label: t.home.stats.madeFromScratch },
     { value: '4', label: t.home.stats.collections },
   ];
@@ -175,7 +175,7 @@ function InspoBand() {
     <section className="relative py-24 lg:py-32 overflow-hidden">
       <img
         src={SITE_IMAGES.inspo}
-        alt="Elegant tiered wedding cake"
+        alt="Evro Konditeri bakery counter"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-espresso/60" />
@@ -203,8 +203,8 @@ function CtaBanner() {
           {t.home.cta.sub}
         </p>
         <Link
-          to="/contact"
-          className="inline-flex items-center gap-2 px-8 py-4 bg-white text-rose text-sm font-sans font-medium tracking-wide hover:bg-cream transition-colors"
+          to="/about"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gold text-sm font-sans font-medium tracking-wide hover:bg-cream transition-colors"
         >
           {t.home.cta.button}
         </Link>

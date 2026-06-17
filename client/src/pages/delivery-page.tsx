@@ -39,8 +39,8 @@ export function DeliveryPage() {
 
           <Section title="Lead Times">
             <p>
-              Most products are available on the same day if ordered before the daily cutoff time.
-              Custom and bespoke cakes require a minimum of 6 weeks lead time.
+              Most products are available the same day if ordered before the daily cutoff time.
+              Custom celebration cakes require at least 3–5 days advance notice.
             </p>
           </Section>
 

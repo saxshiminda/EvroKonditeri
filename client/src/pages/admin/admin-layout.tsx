@@ -33,7 +33,7 @@ export function AdminLayout() {
             to="/"
             className="font-display text-2xl text-warm hover:text-rose transition-colors"
           >
-            Slice
+            Evro Konditeri
           </Link>
           <p className="font-sans text-xs text-warm/40 mt-1 uppercase tracking-widest">Admin</p>
         </div>

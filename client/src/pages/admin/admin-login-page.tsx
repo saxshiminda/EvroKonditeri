@@ -31,7 +31,7 @@ export function AdminLoginPage() {
   return (
     <div className="min-h-screen bg-espresso flex items-center justify-center p-6">
       <div className="w-full max-w-sm bg-warm p-8">
-        <h1 className="font-display text-3xl text-espresso mb-1">Slice Admin</h1>
+        <h1 className="font-display text-3xl text-espresso mb-1">Evro Konditeri Admin</h1>
         <p className="font-sans text-sm text-espresso/50 mb-8">Sign in to manage the bakery</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">

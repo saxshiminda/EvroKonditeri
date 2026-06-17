@@ -89,7 +89,7 @@ export async function initiateCheckout(input: CreateShopOrderInput, customerId?:
   });
 
   // 4. Create payment session
-  const description = `Slice order #${order.id.slice(-6).toUpperCase()}`;
+  const description = `Evro Konditeri order #${order.id.slice(-6).toUpperCase()}`;
   const payment = await createPayment({
     orderId: order.id,
     totalGel: total,

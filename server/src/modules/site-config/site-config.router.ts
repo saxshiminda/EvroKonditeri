@@ -3,7 +3,7 @@ import { auth } from '../../middleware/auth.js';
 import { prisma } from '../../lib/prisma.js';
 import type { Request, Response, NextFunction } from 'express';
 
-const DEFAULTS = { id: 'singleton' as const, siteMode: 'both', siteName: 'Slice' };
+const DEFAULTS = { id: 'singleton' as const, siteMode: 'both', siteName: 'Evro Konditeri' };
 
 async function get(_req: Request, res: Response, next: NextFunction): Promise<void> {
   try {

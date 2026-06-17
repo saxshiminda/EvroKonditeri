@@ -5,100 +5,118 @@ const prisma = new PrismaClient();
 const img = (slug: string) => `/images/cakes/${slug}.jpg`;
 
 const defaultCategories = [
-  { name: 'Wedding', slug: 'wedding' },
-  { name: 'Birthday', slug: 'birthday' },
-  { name: 'Seasonal', slug: 'seasonal' },
-  { name: 'Custom', slug: 'custom' },
+  { name: 'Pastries', slug: 'pastries' },
+  { name: 'Savory', slug: 'savory' },
+  { name: 'Cakes', slug: 'cakes' },
+  { name: 'Sweets', slug: 'sweets' },
+];
+
+const branches = [
+  {
+    name: 'Nadzaladevi — Ts. Dadiani St',
+    address: '6 Ts. Dadiani Street, Nadzaladevi, Tbilisi',
+    phone: '+995 597 68 50 50',
+  },
+  {
+    name: 'Saburtalo — Pekini Avenue',
+    address: '42 Pekini Avenue, Saburtalo, Tbilisi',
+    phone: '+995 595 61 85 85',
+  },
+  {
+    name: 'Chugureti — Marjanishvili St',
+    address: '28 Kote Marjanishvili Street, Chugureti, Tbilisi',
+    phone: '+995 596 94 30 30',
+  },
+  {
+    name: 'Didi Dighomi — Tsereteli Avenue',
+    address: '128 Tsereteli Avenue, Didi Dighomi, Tbilisi',
+    phone: '+995 592 51 57 57',
+  },
 ];
 
 const cakes = [
   {
-    name: 'Grand Ivory Wedding Cake',
+    name: 'Imeruli Khachapuri',
     description:
-      'A towering five-tier masterpiece in ivory fondant, hand-piped with delicate lace work and fresh ivory roses. Vanilla bean sponge with elderflower buttercream.',
-    price: 850,
-    categorySlug: 'wedding',
-    imageUrl: img('grand-ivory-wedding'),
+      'Classic round khachapuri with melted sulguni cheese — our daily bestseller. Baked fresh every morning.',
+    price: 9.5,
+    categorySlug: 'pastries',
+    imageUrl: img('imeruli-khachapuri'),
     featured: true,
     available: true,
   },
   {
-    name: 'Blush Peony Wedding Cake',
+    name: 'Megruli Khachapuri',
     description:
-      'A romantic three-tier cake dressed in dusty rose buttercream with sculpted sugar peonies cascading down the side. Champagne sponge with raspberry conserve.',
-    price: 620,
-    categorySlug: 'wedding',
-    imageUrl: img('blush-peony-wedding'),
-    featured: false,
-    available: true,
-  },
-  {
-    name: 'Golden Birthday Celebration',
-    description:
-      'A bold two-tier cake finished in a deep gold leaf texture with hand-painted florals. Rich chocolate sponge filled with salted caramel ganache.',
-    price: 195,
-    categorySlug: 'birthday',
-    imageUrl: img('golden-birthday-celebration'),
+      'Round khachapuri topped with extra melted cheese on top. Rich, golden, and generously filled.',
+    price: 12,
+    categorySlug: 'pastries',
+    imageUrl: img('megruli-khachapuri'),
     featured: true,
     available: true,
   },
   {
-    name: 'Whimsical Rainbow Smash',
-    description:
-      'A vibrant four-layer rainbow cake with clouds of vanilla Swiss meringue buttercream and rainbow sprinkle drip. Perfect for first birthdays and joyful celebrations.',
-    price: 145,
-    categorySlug: 'birthday',
-    imageUrl: img('whimsical-rainbow-smash'),
+    name: 'Lobiani',
+    description: 'Traditional Georgian bean-filled bread — hearty, savoury, and perfect for a quick lunch.',
+    price: 7.5,
+    categorySlug: 'pastries',
+    imageUrl: img('lobiani'),
     featured: false,
     available: true,
   },
   {
-    name: 'Autumn Spiced Harvest',
+    name: 'Chebureki',
     description:
-      'A seasonally inspired cake with layers of warming cinnamon, cardamom, and apple. Finished with a rustic cream cheese frost and dried orange slices.',
-    price: 165,
-    categorySlug: 'seasonal',
-    imageUrl: img('autumn-spiced-harvest'),
+      'Crispy fried pastry packed with seasoned minced meat. Famous for generous filling — a local favourite.',
+    price: 5,
+    categorySlug: 'savory',
+    imageUrl: img('chebureki'),
     featured: true,
     available: true,
   },
   {
-    name: 'Strawberry Midsummer',
-    description:
-      'Light as air — a génoise sponge with layers of fresh Kentish strawberries and crème diplomate, topped with a crown of seasonal berries.',
-    price: 155,
-    categorySlug: 'seasonal',
-    imageUrl: img('strawberry-midsummer'),
+    name: 'Honey Cake (Medovik)',
+    description: 'Layered honey sponge cake with cream — soft, sweet, and sold by the slice or whole.',
+    price: 8.5,
+    categorySlug: 'cakes',
+    imageUrl: img('honey-cake'),
+    featured: true,
+    available: true,
+  },
+  {
+    name: 'Napoleon Slice',
+    description: 'Flaky puff pastry layers with vanilla cream. A European classic, baked in-house daily.',
+    price: 7,
+    categorySlug: 'cakes',
+    imageUrl: img('napoleon-slice'),
     featured: false,
     available: true,
   },
   {
-    name: 'Bespoke Portrait Cake',
-    description:
-      'A fully custom-designed cake built around your vision. We work with you on every detail — flavours, tiers, colour palette, and any sculptural elements.',
-    price: 450,
-    categorySlug: 'custom',
-    imageUrl: img('bespoke-portrait-cake'),
+    name: 'Chocolate Eclair',
+    description: 'Choux pastry filled with cream and topped with chocolate glaze.',
+    price: 4.5,
+    categorySlug: 'sweets',
+    imageUrl: img('chocolate-eclair'),
     featured: false,
     available: true,
   },
   {
-    name: 'Floral Cascade Custom',
-    description:
-      'A custom three-tier cake draped in hand-crafted sugar florals designed to match your event palette exactly. Flavours and colours chosen at consultation.',
-    price: 520,
-    categorySlug: 'custom',
-    imageUrl: img('floral-cascade-custom'),
+    name: 'Cream Horn',
+    description: 'Crispy puff pastry horn filled with sweet whipped cream.',
+    price: 3.5,
+    categorySlug: 'sweets',
+    imageUrl: img('cream-horn'),
     featured: false,
     available: true,
   },
   {
-    name: 'Winter Spice Wedding',
+    name: 'Custom Birthday Cake',
     description:
-      'A seasonal wedding cake with warming ginger and dark chocolate sponge, iced in a bone-white textured buttercream with sprigs of frosted rosemary and cranberry.',
-    price: 710,
-    categorySlug: 'wedding',
-    imageUrl: img('winter-spice-wedding'),
+      'Order a personalised celebration cake for birthdays and events. Choose size, flavour, and decoration.',
+    price: 85,
+    categorySlug: 'cakes',
+    imageUrl: img('birthday-cake'),
     featured: false,
     available: true,
   },
@@ -130,7 +148,26 @@ async function main() {
     });
   }
 
-  console.log(`Seeded ${defaultCategories.length} categories and ${cakes.length} cakes.`);
+  for (const branch of branches) {
+    const existing = await prisma.branch.findFirst({ where: { name: branch.name } });
+    if (existing) {
+      await prisma.branch.update({ where: { id: existing.id }, data: branch });
+    } else {
+      await prisma.branch.create({
+        data: { ...branch, pickupAvailable: true, active: true },
+      });
+    }
+  }
+
+  await prisma.siteConfig.upsert({
+    where: { id: 'singleton' },
+    update: { siteName: 'Evro Konditeri' },
+    create: { id: 'singleton', siteMode: 'both', siteName: 'Evro Konditeri' },
+  });
+
+  console.log(
+    `Seeded ${defaultCategories.length} categories, ${cakes.length} products, and ${branches.length} branches.`
+  );
 }
 
 main()

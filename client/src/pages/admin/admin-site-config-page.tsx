@@ -20,7 +20,7 @@ export function AdminSiteConfigPage() {
 
   const [form, setForm] = useState<{ siteMode: SiteMode; siteName: string }>({
     siteMode: 'both',
-    siteName: 'Slice',
+    siteName: 'Evro Konditeri',
   });
 
   useEffect(() => {

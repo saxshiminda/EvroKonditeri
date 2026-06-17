@@ -6,6 +6,7 @@ import { useCustomerAuthStore } from '@/store/customer-auth';
 import { useT, useI18nStore, LOCALE_LABELS } from '@/i18n';
 import type { Locale } from '@/i18n';
 import { AuthModal } from '@/features/auth';
+import { BRAND } from '@/lib/brand';
 
 export function Header() {
   const { mobileNavOpen, toggleMobileNav, closeMobileNav } = useUiStore();
@@ -18,6 +19,7 @@ export function Header() {
   const { customer, logout } = useCustomerAuthStore();
   const t = useT();
   const { locale, setLocale } = useI18nStore();
+  const brandName = locale === 'ka' ? BRAND.nameKa : BRAND.name;
 
   const isHome = location.pathname === '/';
 
@@ -52,7 +54,7 @@ export function Header() {
               onClick={closeMobileNav}
               className={`font-display text-2xl lg:text-3xl tracking-tight transition-colors ${opaque ? 'text-espresso hover:text-rose' : 'text-warm hover:text-rose'}`}
             >
-              Slice
+              {brandName}
             </Link>
 
             {/* Desktop nav */}

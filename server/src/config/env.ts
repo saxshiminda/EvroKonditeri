@@ -22,7 +22,7 @@ export const env = {
 
   // Email (Resend) — optional; logs to console when absent
   resendApiKey: process.env['RESEND_API_KEY'],
-  emailFrom: process.env['EMAIL_FROM'] ?? 'Slice Bakery <noreply@example.com>',
+  emailFrom: process.env['EMAIL_FROM'] ?? 'Evro Konditeri <noreply@evrokonditeri.ge>',
   emailBakery: process.env['EMAIL_BAKERY'] ?? '',
 
   // Payment gateway — BoG iPay v2

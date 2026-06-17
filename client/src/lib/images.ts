@@ -3,19 +3,19 @@ export const SITE_IMAGES = {
   hero: '/images/site/hero.jpg',
   inspo: '/images/site/inspo.jpg',
   aboutBaker: '/images/site/about-baker.jpg',
-  gallerySlices: '/images/site/gallery-slices.jpg',
+  galleryPastries: '/images/site/gallery-pastries.jpg',
 } as const;
 
 export const CAKE_IMAGES = [
-  { slug: 'grand-ivory-wedding', label: 'Grand Ivory Wedding' },
-  { slug: 'blush-peony-wedding', label: 'Blush Peony Wedding' },
-  { slug: 'golden-birthday-celebration', label: 'Golden Birthday' },
-  { slug: 'whimsical-rainbow-smash', label: 'Rainbow Smash' },
-  { slug: 'autumn-spiced-harvest', label: 'Autumn Harvest' },
-  { slug: 'strawberry-midsummer', label: 'Strawberry Midsummer' },
-  { slug: 'bespoke-portrait-cake', label: 'Bespoke Portrait' },
-  { slug: 'floral-cascade-custom', label: 'Floral Cascade' },
-  { slug: 'winter-spice-wedding', label: 'Winter Spice Wedding' },
+  { slug: 'imeruli-khachapuri', label: 'Imeruli Khachapuri' },
+  { slug: 'megruli-khachapuri', label: 'Megruli Khachapuri' },
+  { slug: 'lobiani', label: 'Lobiani' },
+  { slug: 'chebureki', label: 'Chebureki' },
+  { slug: 'honey-cake', label: 'Honey Cake' },
+  { slug: 'napoleon-slice', label: 'Napoleon Slice' },
+  { slug: 'chocolate-eclair', label: 'Chocolate Eclair' },
+  { slug: 'cream-horn', label: 'Cream Horn' },
+  { slug: 'birthday-cake', label: 'Birthday Cake' },
 ] as const;
 
 export function cakeImagePath(slug: string): string {

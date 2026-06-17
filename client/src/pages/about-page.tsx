@@ -2,21 +2,22 @@ import { useFadeIn } from '@/hooks/use-fade-in';
 import { Link } from 'react-router-dom';
 import { SITE_IMAGES, cakeImagePath } from '@/lib/images';
 import { useT } from '@/i18n';
+import { BranchList } from '@/components/branch-list';
 
 export function AboutPage() {
   const storyRef = useFadeIn<HTMLDivElement>();
   const valuesRef = useFadeIn<HTMLDivElement>();
   const imageRef = useFadeIn<HTMLDivElement>();
   const galleryRef = useFadeIn<HTMLDivElement>();
+  const locationsRef = useFadeIn<HTMLDivElement>();
   const t = useT();
 
   return (
     <main className="min-h-screen pt-16 lg:pt-20">
-      {/* Hero */}
       <section className="py-20 lg:py-32 px-6 lg:px-8">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div ref={storyRef}>
-            <p className="font-sans text-xs tracking-widest uppercase text-rose mb-4">
+            <p className="font-sans text-xs tracking-widest uppercase text-gold mb-4">
               {t.about.tagline}
             </p>
             <h1 className="font-display text-5xl lg:text-6xl text-espresso leading-tight mb-8">
@@ -34,18 +35,17 @@ export function AboutPage() {
           <div ref={imageRef} className="aspect-[3/4] overflow-hidden bg-cream">
             <img
               src={SITE_IMAGES.aboutBaker}
-              alt="Our baker at work"
+              alt="Evro Konditeri bakery"
               className="w-full h-full object-cover"
             />
           </div>
         </div>
       </section>
 
-      {/* Values */}
       <section className="py-20 lg:py-28 bg-espresso">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div ref={valuesRef}>
-            <p className="font-sans text-xs tracking-widest uppercase text-rose mb-3">
+            <p className="font-sans text-xs tracking-widest uppercase text-gold mb-3">
               {t.about.valuesTagline}
             </p>
             <h2 className="font-display text-4xl lg:text-5xl text-warm mb-16">
@@ -56,7 +56,7 @@ export function AboutPage() {
               {t.about.values.map(({ title, body }, i) => (
                 <div
                   key={i}
-                  className={`border-t-2 ${i % 2 === 0 ? 'border-rose' : 'border-sage'} pt-6`}
+                  className={`border-t-2 ${i % 2 === 0 ? 'border-gold' : 'border-sage'} pt-6`}
                 >
                   <h3 className="font-display text-xl text-warm mb-3">{title}</h3>
                   <p className="font-sans text-sm text-warm/50 leading-relaxed">{body}</p>
@@ -67,7 +67,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Gallery strip */}
       <section className="py-20 lg:py-28 bg-cream">
         <div ref={galleryRef} className="max-w-6xl mx-auto px-6 lg:px-8">
           <p className="font-sans text-xs tracking-widest uppercase text-espresso/40 mb-10 text-center">
@@ -76,22 +75,22 @@ export function AboutPage() {
           <div className="grid grid-cols-3 gap-3 lg:gap-4">
             <div className="aspect-square overflow-hidden">
               <img
-                src={cakeImagePath('strawberry-midsummer')}
-                alt="Cake detail"
+                src={cakeImagePath('imeruli-khachapuri')}
+                alt="Khachapuri"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="aspect-square overflow-hidden">
               <img
-                src={cakeImagePath('bespoke-portrait-cake')}
-                alt="Floral cake"
+                src={cakeImagePath('chebureki')}
+                alt="Chebureki"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="aspect-square overflow-hidden">
               <img
-                src={SITE_IMAGES.gallerySlices}
-                alt="Cake slices"
+                src={SITE_IMAGES.galleryPastries}
+                alt="Fresh pastries"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -99,15 +98,27 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-rose py-20 lg:py-28 px-6 lg:px-8 text-center">
+      <section className="py-20 lg:py-28 bg-warm">
+        <div ref={locationsRef} className="max-w-6xl mx-auto px-6 lg:px-8">
+          <p className="font-sans text-xs tracking-widest uppercase text-espresso/40 mb-3">
+            {t.about.locationsHeading}
+          </p>
+          <h2 className="font-display text-3xl lg:text-4xl text-espresso mb-4">
+            {t.about.locationsHeading}
+          </h2>
+          <p className="font-sans text-sm text-espresso/60 mb-10 max-w-xl">{t.about.locationsSub}</p>
+          <BranchList />
+        </div>
+      </section>
+
+      <section className="bg-gold py-20 lg:py-28 px-6 lg:px-8 text-center">
         <h2 className="font-display text-4xl lg:text-5xl text-white mb-4">{t.about.ctaHeading}</h2>
         <p className="font-sans text-base text-white/75 max-w-sm mx-auto leading-relaxed mb-8">
           {t.about.ctaSub}
         </p>
         <Link
-          to="/contact"
-          className="inline-flex items-center gap-2 px-8 py-4 bg-white text-rose text-sm font-sans font-medium tracking-wide hover:bg-cream transition-colors"
+          to="/menu"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gold text-sm font-sans font-medium tracking-wide hover:bg-cream transition-colors"
         >
           {t.about.ctaButton}
         </Link>

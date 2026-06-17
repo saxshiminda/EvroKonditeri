@@ -41,10 +41,10 @@ export async function sendOrderConfirmationToCustomer(order: {
 
   await send({
     to: order.customerEmail,
-    subject: `Your Slice order #${order.id.slice(-6).toUpperCase()}`,
+    subject: `Your Evro Konditeri order #${order.id.slice(-6).toUpperCase()}`,
     html: `
-      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#1C1209;">
-        <h2 style="color:#D4967A;">Thank you, ${order.customerName}!</h2>
+      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#2C1810;">
+        <h2 style="color:#C8922A;">Thank you, ${order.customerName}!</h2>
         <p>Your order has been received and payment confirmed. We will prepare it for you.</p>
         <table style="width:100%;border-collapse:collapse;margin:24px 0;">
           ${itemsHtml}
@@ -76,8 +76,8 @@ export async function sendNewOrderAlertToBakery(order: {
     to: env.emailBakery,
     subject: `New order #${order.id.slice(-6).toUpperCase()} — ₾${order.total.toFixed(2)}`,
     html: `
-      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#1C1209;">
-        <h2 style="color:#D4967A;">New paid order</h2>
+      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#2C1810;">
+        <h2 style="color:#C8922A;">New paid order</h2>
         <p><strong>Customer:</strong> ${order.customerName} (${order.customerEmail})</p>
         ${order.customerPhone ? `<p><strong>Phone:</strong> ${order.customerPhone}</p>` : ''}
         <p><strong>Fulfillment:</strong> ${order.fulfillmentType}</p>
@@ -100,8 +100,8 @@ export async function sendInquiryNotificationToBakery(inquiry: {
     to: env.emailBakery,
     subject: `New enquiry from ${inquiry.name}`,
     html: `
-      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#1C1209;">
-        <h2 style="color:#D4967A;">New contact enquiry</h2>
+      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#2C1810;">
+        <h2 style="color:#C8922A;">New contact enquiry</h2>
         <p><strong>From:</strong> ${inquiry.name} &lt;${inquiry.email}&gt;</p>
         <p style="white-space:pre-wrap;">${inquiry.message}</p>
       </div>
@@ -113,12 +113,12 @@ export async function sendPasswordResetEmail(email: string, token: string): Prom
   const resetUrl = `${env.clientUrl}/reset-password?token=${token}`;
   await send({
     to: email,
-    subject: 'Reset your Slice password',
+    subject: 'Reset your Evro Konditeri password',
     html: `
-      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#1C1209;">
-        <h2 style="color:#D4967A;">Password reset</h2>
+      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#2C1810;">
+        <h2 style="color:#C8922A;">Password reset</h2>
         <p>Click the link below to reset your password. The link expires in 1 hour.</p>
-        <a href="${resetUrl}" style="display:inline-block;margin:16px 0;padding:12px 24px;background:#D4967A;color:white;text-decoration:none;">Reset password</a>
+        <a href="${resetUrl}" style="display:inline-block;margin:16px 0;padding:12px 24px;background:#C8922A;color:white;text-decoration:none;">Reset password</a>
         <p style="color:#888;font-size:12px;">If you did not request this, you can ignore this email.</p>
       </div>
     `,

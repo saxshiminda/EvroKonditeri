@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useT } from '@/i18n';
+import { useT, useI18nStore } from '@/i18n';
+import { BRAND } from '@/lib/brand';
 
 export function Footer() {
   const t = useT();
+  const { locale } = useI18nStore();
+  const brandName = locale === 'ka' ? BRAND.nameKa : BRAND.name;
 
   return (
     <footer className="bg-espresso text-warm/70">
@@ -11,9 +14,9 @@ export function Footer() {
           <div>
             <Link
               to="/"
-              className="font-display text-3xl text-warm hover:text-rose transition-colors"
+              className="font-display text-3xl text-warm hover:text-gold transition-colors"
             >
-              Slice
+              {brandName}
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-warm/50 max-w-xs">{t.footer.tagline}</p>
           </div>
@@ -41,9 +44,26 @@ export function Footer() {
               {t.footer.contactLabel}
             </h3>
             <p className="text-sm leading-relaxed text-warm/50">{t.footer.contactDesc}</p>
+            <div className="mt-4 space-y-2 text-sm">
+              <a
+                href={`tel:${t.footer.phone.replace(/\s/g, '')}`}
+                className="block text-gold hover:text-gold-light transition-colors"
+              >
+                {t.footer.phone}
+              </a>
+              <p className="text-warm/40">{t.footer.hours}</p>
+              <a
+                href={BRAND.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-gold hover:text-gold-light transition-colors"
+              >
+                {t.footer.facebook} →
+              </a>
+            </div>
             <Link
               to="/contact"
-              className="inline-block mt-5 text-sm font-medium text-rose hover:text-rose-light transition-colors"
+              className="inline-block mt-5 text-sm font-medium text-gold hover:text-gold-light transition-colors"
             >
               {t.footer.contactCta}
             </Link>
@@ -52,7 +72,7 @@ export function Footer() {
 
         <div className="mt-16 pt-8 border-t border-warm/10 flex flex-wrap items-center justify-between gap-4 text-xs text-warm/30">
           <span>
-            © {new Date().getFullYear()} Slice. {t.footer.rights}
+            © {new Date().getFullYear()} {brandName}. {t.footer.rights}
           </span>
           <nav className="flex gap-4">
             <Link to="/privacy" className="hover:text-warm/60 transition-colors">

@@ -5,13 +5,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        warm: '#FAF7F4',
-        espresso: '#1C1209',
-        rose: '#D4967A',
-        sage: '#8A9E8C',
-        cream: '#F2EDE7',
-        'rose-light': '#E8B89E',
-        'rose-dark': '#C07D60',
+        warm: '#FBF6EF',
+        espresso: '#2C1810',
+        gold: '#C8922A',
+        sage: '#5A7247',
+        cream: '#F5EDE0',
+        'gold-light': '#E5B85C',
+        'gold-dark': '#A67420',
+        // Legacy aliases — existing components use rose-* classes
+        rose: '#C8922A',
+        'rose-light': '#E5B85C',
+        'rose-dark': '#A67420',
       },
       fontFamily: {
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
