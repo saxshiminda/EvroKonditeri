@@ -5,10 +5,10 @@ const prisma = new PrismaClient();
 const img = (slug: string) => `/images/cakes/${slug}.jpg`;
 
 const defaultCategories = [
-  { name: 'Pastries', slug: 'pastries' },
-  { name: 'Savory', slug: 'savory' },
-  { name: 'Cakes', slug: 'cakes' },
-  { name: 'Sweets', slug: 'sweets' },
+  { name: "Kids' Birthday Cakes", slug: 'kids-birthday' },
+  { name: 'Baby & Newborn Cakes', slug: 'baby-cakes' },
+  { name: 'Wedding & Elegant Cakes', slug: 'wedding-elegant' },
+  { name: 'Themed Celebration Cakes', slug: 'themed-celebration' },
 ];
 
 const branches = [
@@ -35,88 +35,177 @@ const branches = [
 ];
 
 const cakes = [
+  // Kids' Birthday Cakes
   {
-    name: 'Imeruli Khachapuri',
+    name: 'Safari Jungle Birthday',
     description:
-      'Classic round khachapuri with melted sulguni cheese — our daily bestseller. Baked fresh every morning.',
-    price: 9.5,
-    categorySlug: 'pastries',
-    imageUrl: img('imeruli-khachapuri'),
+      'A playful safari-themed cake with fondant lion, elephant, and giraffe — personalised with your child\'s name and age.',
+    price: 120,
+    categorySlug: 'kids-birthday',
+    imageUrl: img('safari-birthday-cake'),
     featured: true,
     available: true,
   },
   {
-    name: 'Megruli Khachapuri',
+    name: 'Paw Patrol Birthday',
     description:
-      'Round khachapuri topped with extra melted cheese on top. Rich, golden, and generously filled.',
-    price: 12,
-    categorySlug: 'pastries',
-    imageUrl: img('megruli-khachapuri'),
+      'Colourful Paw Patrol cake with character toppers, paw-print lollipops, and a custom age number.',
+    price: 110,
+    categorySlug: 'kids-birthday',
+    imageUrl: img('paw-patrol-birthday'),
     featured: true,
     available: true,
   },
   {
-    name: 'Lobiani',
-    description: 'Traditional Georgian bean-filled bread — hearty, savoury, and perfect for a quick lunch.',
-    price: 7.5,
-    categorySlug: 'pastries',
-    imageUrl: img('lobiani'),
-    featured: false,
-    available: true,
-  },
-  {
-    name: 'Chebureki',
+    name: 'Carousel Birthday',
     description:
-      'Crispy fried pastry packed with seasoned minced meat. Famous for generous filling — a local favourite.',
-    price: 5,
-    categorySlug: 'savory',
-    imageUrl: img('chebureki'),
+      'A carnival carousel cake with spinning animal figures, rainbow stripes, and a personalised age plaque.',
+    price: 130,
+    categorySlug: 'kids-birthday',
+    imageUrl: img('carousel-birthday'),
     featured: true,
     available: true,
   },
   {
-    name: 'Honey Cake (Medovik)',
-    description: 'Layered honey sponge cake with cream — soft, sweet, and sold by the slice or whole.',
-    price: 8.5,
-    categorySlug: 'cakes',
-    imageUrl: img('honey-cake'),
+    name: 'Unicorn Garden Birthday',
+    description:
+      'Whimsical unicorn cake with pastel butterflies, bees, and hand-painted flowers — perfect for little dreamers.',
+    price: 115,
+    categorySlug: 'kids-birthday',
+    imageUrl: img('unicorn-birthday'),
+    featured: false,
+    available: true,
+  },
+  {
+    name: 'Candy Land Birthday',
+    description:
+      'A dreamy candy-land cake with swirl lollipops, pastel pearls, and a personalised name plaque.',
+    price: 125,
+    categorySlug: 'kids-birthday',
+    imageUrl: img('candy-land-birthday'),
+    featured: false,
+    available: true,
+  },
+  // Baby & Newborn Cakes
+  {
+    name: 'Teddy Bear Newborn',
+    description:
+      'A sweet birth-announcement cake with teddy bear topper, cloud details, and custom birth date, time, and weight.',
+    price: 95,
+    categorySlug: 'baby-cakes',
+    imageUrl: img('teddy-bear-newborn'),
     featured: true,
     available: true,
   },
   {
-    name: 'Napoleon Slice',
-    description: 'Flaky puff pastry layers with vanilla cream. A European classic, baked in-house daily.',
-    price: 7,
-    categorySlug: 'cakes',
-    imageUrl: img('napoleon-slice'),
-    featured: false,
-    available: true,
-  },
-  {
-    name: 'Chocolate Eclair',
-    description: 'Choux pastry filled with cream and topped with chocolate glaze.',
-    price: 4.5,
-    categorySlug: 'sweets',
-    imageUrl: img('chocolate-eclair'),
-    featured: false,
-    available: true,
-  },
-  {
-    name: 'Cream Horn',
-    description: 'Crispy puff pastry horn filled with sweet whipped cream.',
-    price: 3.5,
-    categorySlug: 'sweets',
-    imageUrl: img('cream-horn'),
-    featured: false,
-    available: true,
-  },
-  {
-    name: 'Custom Birthday Cake',
+    name: 'Moon & Stars Baby',
     description:
-      'Order a personalised celebration cake for birthdays and events. Choose size, flavour, and decoration.',
+      'Soft blue baby cake with a sleeping bear on a crescent moon, gold stars, and personalised BABY blocks.',
+    price: 90,
+    categorySlug: 'baby-cakes',
+    imageUrl: img('moon-stars-baby'),
+    featured: false,
+    available: true,
+  },
+  {
+    name: 'Bunny Birth Announcement',
+    description:
+      'Pink bunny-themed birth cake with clock, weight scale, and date details — a beautiful way to welcome a new arrival.',
+    price: 100,
+    categorySlug: 'baby-cakes',
+    imageUrl: img('bunny-birth-cake'),
+    featured: false,
+    available: true,
+  },
+  // Wedding & Elegant Cakes
+  {
+    name: 'Floral Watercolor Tier',
+    description:
+      'A two-tier artistic cake with hand-painted watercolor florals, edible butterflies, and pearl accents.',
+    price: 180,
+    categorySlug: 'wedding-elegant',
+    imageUrl: img('floral-watercolor-cake'),
+    featured: true,
+    available: true,
+  },
+  {
+    name: 'Classic Cream Wedding',
+    description:
+      'Timeless single-tier cake with elegant piped swags, pearl details, and smooth ivory frosting.',
+    price: 150,
+    categorySlug: 'wedding-elegant',
+    imageUrl: img('classic-cream-wedding'),
+    featured: true,
+    available: true,
+  },
+  {
+    name: 'Fresh Strawberry Cake',
+    description:
+      'A celebration classic — fresh strawberries atop piped cream frosting with satin ribbon bows.',
     price: 85,
-    categorySlug: 'cakes',
-    imageUrl: img('birthday-cake'),
+    categorySlug: 'wedding-elegant',
+    imageUrl: img('fresh-strawberry-cake'),
+    featured: false,
+    available: true,
+  },
+  {
+    name: 'White Petal Elegance',
+    description:
+      'Romantic all-white cake with delicate petal-textured frosting — ideal for weddings and anniversaries.',
+    price: 140,
+    categorySlug: 'wedding-elegant',
+    imageUrl: img('white-petal-cake'),
+    featured: false,
+    available: true,
+  },
+  {
+    name: 'Strawberry & Baby\'s Breath',
+    description:
+      'Fresh strawberries and baby\'s breath on ruffled white tiers — a stunning centrepiece for any celebration.',
+    price: 95,
+    categorySlug: 'wedding-elegant',
+    imageUrl: img('strawberry-babys-breath'),
+    featured: false,
+    available: true,
+  },
+  // Themed Celebration Cakes
+  {
+    name: 'Little Prince Cake',
+    description:
+      'A cosmic Little Prince themed cake with a fondant planet, flowing scarf, and golden star toppers.',
+    price: 115,
+    categorySlug: 'themed-celebration',
+    imageUrl: img('little-prince-cake'),
+    featured: true,
+    available: true,
+  },
+  {
+    name: 'Princess Crown Cake',
+    description:
+      'A fairytale pink cake with a golden crown topper, pearl arch, and delicate butterfly accents.',
+    price: 120,
+    categorySlug: 'themed-celebration',
+    imageUrl: img('princess-crown-cake'),
+    featured: false,
+    available: true,
+  },
+  {
+    name: 'Butterfly Garden',
+    description:
+      'A vibrant butterfly cake with piped ruffle wings, colourful teardrop borders, and garden florals.',
+    price: 105,
+    categorySlug: 'themed-celebration',
+    imageUrl: img('butterfly-garden-cake'),
+    featured: false,
+    available: true,
+  },
+  {
+    name: 'Black & Gold Crown',
+    description:
+      'A bold black-and-white birthday cake with a jewelled gold crown — sophisticated and striking.',
+    price: 110,
+    categorySlug: 'themed-celebration',
+    imageUrl: img('black-gold-crown'),
     featured: false,
     available: true,
   },
@@ -124,6 +213,12 @@ const cakes = [
 
 async function main() {
   console.log('Seeding database...');
+
+  // Replace catalogue so image paths and categories stay in sync with public assets.
+  await prisma.shopOrderItem.deleteMany();
+  await prisma.productVariant.deleteMany();
+  await prisma.cake.deleteMany();
+  await prisma.category.deleteMany();
 
   const categoryMap = new Map<string, string>();
 

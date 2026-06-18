@@ -20,11 +20,8 @@ export function ContactPage() {
             <h1 className="font-display text-5xl lg:text-6xl text-espresso leading-tight mb-8">
               {t.contact.heading}
             </h1>
-            <p className="font-sans text-base text-espresso/60 leading-relaxed mb-5">
-              {t.contact.body1}
-            </p>
-            <p className="font-sans text-base text-espresso/60 leading-relaxed mb-5">
-              {t.contact.body2}
+            <p className="font-sans text-base text-espresso/60 leading-relaxed mb-10">
+              {t.contact.body}
             </p>
 
             <div className="mt-10 space-y-4 border-t border-espresso/10 pt-8">

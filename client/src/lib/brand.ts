@@ -2,7 +2,7 @@
 export const BRAND = {
   name: 'Evro Konditeri',
   nameKa: 'ევრო კონდიტერი',
-  tagline: 'Fresh bakery & confectionery',
+  tagline: 'Custom cakes & confectionery',
   facebook: 'https://www.facebook.com/Evro.Konditeri.Ge',
   mainPhone: '+995 597 68 50 50',
   hours: 'Daily · 09:00 – 22:00',

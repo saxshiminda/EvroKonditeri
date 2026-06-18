@@ -7,6 +7,7 @@ import { useT, useI18nStore, LOCALE_LABELS } from '@/i18n';
 import type { Locale } from '@/i18n';
 import { AuthModal } from '@/features/auth';
 import { BRAND } from '@/lib/brand';
+import { SITE_IMAGES } from '@/lib/images';
 
 export function Header() {
   const { mobileNavOpen, toggleMobileNav, closeMobileNav } = useUiStore();
@@ -31,7 +32,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isHome]);
 
-  const opaque = !isHome || scrolled;
+  const opaque = true;
   const count = itemCount();
 
   const navLinks = [
@@ -52,9 +53,18 @@ export function Header() {
             <Link
               to="/"
               onClick={closeMobileNav}
-              className={`font-display text-2xl lg:text-3xl tracking-tight transition-colors ${opaque ? 'text-espresso hover:text-rose' : 'text-warm hover:text-rose'}`}
+              className="flex items-center gap-2.5 group"
             >
-              {brandName}
+              <img
+                src={SITE_IMAGES.logo}
+                alt=""
+                className="h-9 w-9 lg:h-10 lg:w-10 rounded-full object-cover ring-1 ring-white/20"
+              />
+              <span
+                className={`font-display text-2xl lg:text-3xl tracking-tight transition-colors ${opaque ? 'text-espresso group-hover:text-rose' : 'text-warm group-hover:text-rose'}`}
+              >
+                {brandName}
+              </span>
             </Link>
 
             {/* Desktop nav */}

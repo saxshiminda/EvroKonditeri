@@ -178,7 +178,10 @@ export function OrderForm() {
           label={t.order.form.category}
           value={form.categoryId}
           onChange={set('categoryId')}
-          options={categories.map((c) => ({ value: c.id, label: c.name }))}
+          options={categories.map((c) => ({
+            value: c.id,
+            label: (t.categories as Record<string, string>)[c.slug] ?? c.name,
+          }))}
           placeholder={t.order.form.selectCategory}
           error={errors.categoryId}
         />

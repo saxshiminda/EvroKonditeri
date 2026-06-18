@@ -8,7 +8,7 @@ import {
   filterAndSortCakes,
   type SortOption,
 } from '@/features/menu';
-import { useT } from '@/i18n';
+import { useT, useCategoryLabel } from '@/i18n';
 
 const SKELETON_COUNT = 6;
 
@@ -23,15 +23,17 @@ export function MenuPage() {
     category: selectedCategory,
   });
 
+  const selectedCategoryData = categories.find((c) => c.slug === selectedCategory);
+  const translatedCategoryLabel = useCategoryLabel(
+    selectedCategoryData?.slug ?? '',
+    selectedCategoryData?.name ?? ''
+  );
+  const categoryLabel = selectedCategory === 'all' ? '' : translatedCategoryLabel;
+
   const displayedCakes = useMemo(
     () => (data ? filterAndSortCakes(data.cakes, search, sort) : []),
     [data, search, sort]
   );
-
-  const categoryLabel =
-    selectedCategory === 'all'
-      ? ''
-      : (categories.find((c) => c.slug === selectedCategory)?.name ?? '');
 
   return (
     <main className="min-h-screen pt-16 lg:pt-20">

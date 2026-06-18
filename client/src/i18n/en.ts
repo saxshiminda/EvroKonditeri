@@ -11,47 +11,31 @@ export const en = {
   },
   home: {
     hero: {
-      tagline: 'Georgian Bakery & Confectionery',
-      heading: 'Fresh from the oven, every day.',
-      sub: 'Khachapuri, chebureki, cakes, and pastries — baked fresh across Tbilisi. Order online for pickup or delivery.',
+      tagline: 'Confectionery made with the finest ingredients.',
+      heading: 'Order a cake with your chosen design and filling.',
       cta: 'View the Menu',
-      ctaCustom: 'Order a custom cake',
+      ctaCustom: 'Contact us',
     },
     brand: {
-      heading: 'Tbilisi\'s favourite bakery, on every corner.',
-      body1:
-        'Evro Konditeri is a beloved Georgian bakery chain serving fresh khachapuri, chebureki, pastries, and celebration cakes from multiple locations across Tbilisi. Everything is baked daily using quality ingredients — no shortcuts.',
-      body2:
-        'Whether you need a quick lunch, a box of sweets for guests, or a custom birthday cake — our team is ready to help at any of our branches.',
-      link: 'Our story →',
-    },
-    stats: {
-      cakesCreated: 'Branches in Tbilisi',
-      leadTime: 'Opening hours',
-      madeFromScratch: 'Baked fresh daily',
-      collections: 'Product categories',
+      heading:
+        'Evro Konditeri cares about your mood and prepares the best desserts for your celebration.',
     },
     featured: {
-      label: 'Customer Favourites',
-      heading: 'Popular items',
+      heading: 'Our cakes',
       viewAll: 'View all →',
       loadError: 'Could not load products at this time.',
     },
-    inspo: {
-      label: 'Visit us today',
-      heading: 'The taste of home, wherever you are in Tbilisi.',
-    },
-    cta: {
-      heading: 'Craving something fresh?',
-      sub: 'Browse our menu, order for pickup or delivery, or visit any of our branches across the city.',
-      button: 'Find a Branch',
-    },
+  },
+  categories: {
+    'kids-birthday': "Kids' Birthday Cakes",
+    'baby-cakes': 'Baby & Newborn Cakes',
+    'wedding-elegant': 'Wedding & Elegant Cakes',
+    'themed-celebration': 'Themed Celebration Cakes',
   },
   menu: {
     ourCakes: 'Our Products',
     heading: 'The Menu',
-    tagline:
-      'Fresh khachapuri, chebureki, pastries, and cakes — available daily at all branches. Order online for pickup or delivery across Tbilisi.',
+    tagline: 'Order a cake with your chosen design and filling.',
     search: 'Search cakes…',
     all: 'All',
     sort: {
@@ -138,10 +122,7 @@ export const en = {
   contact: {
     tagline: 'Get in Touch',
     heading: 'We\'d love to hear from you.',
-    body1:
-      'Have a question about our menu, want to place a large order, or need a custom cake for a celebration? Reach out by phone, visit any branch, or send us a message.',
-    body2:
-      'We respond to enquiries within one business day. For custom cakes, please allow at least 3–5 days advance notice.',
+    body: 'Questions about a cake, a large order, or a custom design? Call us, visit a branch, or send a message.',
     responseTime: 'Phone',
     responseTimeValue: '+995 597 68 50 50',
     leadTime: 'Hours',
@@ -163,39 +144,16 @@ export const en = {
     },
   },
   about: {
-    tagline: 'Our Story',
-    heading: 'European quality. Georgian heart.',
-    body1:
-      'Evro Konditeri has grown into one of Tbilisi\'s most trusted bakery chains — known for generous khachapuri, crispy chebureki, and cakes that taste as good as they look. Locals queue at our counters every day.',
+    tagline: 'About us',
+    heading: 'Evro Konditeri',
+    body1: 'Confectionery made with the finest ingredients.',
     body2:
-      'From a single shop to multiple branches across the city, our promise has never changed: bake fresh, use quality ingredients, and serve every customer with a smile.',
-    body3:
-      'Whether you visit us for a quick snack or order a custom celebration cake, you\'ll find the same warmth and flavour at every location.',
-    valuesTagline: 'What We Stand For',
-    valuesHeading: 'Our values',
-    values: [
-      {
-        title: 'Fresh every morning.',
-        body: 'Our bakers start early so khachapuri, lobiani, and pastries are ready when you arrive — never reheated, never stale.',
-      },
-      {
-        title: 'Generous portions.',
-        body: 'Our chebureki are famous for being packed with filling. Quality and quantity — that\'s the Evro Konditeri way.',
-      },
-      {
-        title: 'Across Tbilisi.',
-        body: 'Multiple branches mean you\'re never far from fresh bread, hot khachapuri, and something sweet.',
-      },
-      {
-        title: 'For every occasion.',
-        body: 'Daily lunch, weekend treats, birthday cakes, and wedding tiers — we do it all, made to order when you need it.',
-      },
-    ],
-    galleryLabel: 'From Our Kitchen',
-    locationsHeading: 'Find us in Tbilisi',
-    locationsSub: 'Tap a branch to see its location on the map.',
-    ctaHeading: 'Come taste the difference.',
-    ctaSub: 'Visit any branch or order online for pickup and delivery.',
+      'Evro Konditeri cares about your mood and prepares the best desserts for your celebration.',
+    galleryLabel: 'Our work',
+    locationsHeading: 'Branches',
+    locationsSub: 'Select a branch to see it on the map.',
+    ctaHeading: 'Order a cake',
+    ctaSub: 'Browse the menu or contact us to discuss your design.',
     ctaButton: 'View Menu',
   },
   order: {
@@ -309,9 +267,8 @@ export const en = {
     navigateLabel: 'Navigate',
     contactLabel: 'Contact',
     tagline:
-      'Fresh Georgian bakery & confectionery. Khachapuri, chebureki, cakes, and pastries — baked daily across Tbilisi.',
-    contactDesc:
-      'Call us, visit a branch, or message us on Facebook. We\'re here every day from 09:00 to 22:00.',
+      'Evro Konditeri — confectionery made with the finest ingredients, across Tbilisi.',
+    contactDesc: 'Call us or message us on Facebook. Daily · 09:00 – 22:00.',
     contactCta: 'Send a message →',
     phone: '+995 597 68 50 50',
     hours: 'Daily · 09:00 – 22:00',

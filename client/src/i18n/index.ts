@@ -17,7 +17,7 @@ interface I18nState {
 export const useI18nStore = create<I18nState>()(
   persist(
     (set) => ({
-      locale: 'en' as Locale,
+      locale: 'ka' as Locale,
       setLocale: (locale) => set({ locale }),
     }),
     { name: 'slice-locale', storage: createJSONStorage(() => localStorage) }
@@ -28,6 +28,8 @@ export function useT(): Translations {
   const locale = useI18nStore((s) => s.locale);
   return LOCALES[locale];
 }
+
+export { useCategoryLabel, categoryLabel } from './categories';
 
 export const LOCALE_LABELS: Record<Locale, string> = {
   en: 'EN',

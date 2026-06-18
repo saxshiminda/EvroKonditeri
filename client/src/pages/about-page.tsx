@@ -6,7 +6,6 @@ import { BranchList } from '@/components/branch-list';
 
 export function AboutPage() {
   const storyRef = useFadeIn<HTMLDivElement>();
-  const valuesRef = useFadeIn<HTMLDivElement>();
   const imageRef = useFadeIn<HTMLDivElement>();
   const galleryRef = useFadeIn<HTMLDivElement>();
   const locationsRef = useFadeIn<HTMLDivElement>();
@@ -26,43 +25,15 @@ export function AboutPage() {
             <p className="font-sans text-base text-espresso/60 leading-relaxed mb-5">
               {t.about.body1}
             </p>
-            <p className="font-sans text-base text-espresso/60 leading-relaxed mb-5">
-              {t.about.body2}
-            </p>
-            <p className="font-sans text-base text-espresso/60 leading-relaxed">{t.about.body3}</p>
+            <p className="font-sans text-base text-espresso/60 leading-relaxed">{t.about.body2}</p>
           </div>
 
           <div ref={imageRef} className="aspect-[3/4] overflow-hidden bg-cream">
             <img
               src={SITE_IMAGES.aboutBaker}
-              alt="Evro Konditeri bakery"
+              alt="Evro Konditeri"
               className="w-full h-full object-cover"
             />
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28 bg-espresso">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div ref={valuesRef}>
-            <p className="font-sans text-xs tracking-widest uppercase text-gold mb-3">
-              {t.about.valuesTagline}
-            </p>
-            <h2 className="font-display text-4xl lg:text-5xl text-warm mb-16">
-              {t.about.valuesHeading}
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
-              {t.about.values.map(({ title, body }, i) => (
-                <div
-                  key={i}
-                  className={`border-t-2 ${i % 2 === 0 ? 'border-gold' : 'border-sage'} pt-6`}
-                >
-                  <h3 className="font-display text-xl text-warm mb-3">{title}</h3>
-                  <p className="font-sans text-sm text-warm/50 leading-relaxed">{body}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -75,22 +46,22 @@ export function AboutPage() {
           <div className="grid grid-cols-3 gap-3 lg:gap-4">
             <div className="aspect-square overflow-hidden">
               <img
-                src={cakeImagePath('imeruli-khachapuri')}
-                alt="Khachapuri"
+                src={cakeImagePath('floral-watercolor-cake')}
+                alt="Floral watercolor cake"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="aspect-square overflow-hidden">
               <img
-                src={cakeImagePath('chebureki')}
-                alt="Chebureki"
+                src={cakeImagePath('safari-birthday-cake')}
+                alt="Safari birthday cake"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div className="aspect-square overflow-hidden">
               <img
                 src={SITE_IMAGES.galleryPastries}
-                alt="Fresh pastries"
+                alt="Candy land birthday cake"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -100,9 +71,6 @@ export function AboutPage() {
 
       <section className="py-20 lg:py-28 bg-warm">
         <div ref={locationsRef} className="max-w-6xl mx-auto px-6 lg:px-8">
-          <p className="font-sans text-xs tracking-widest uppercase text-espresso/40 mb-3">
-            {t.about.locationsHeading}
-          </p>
           <h2 className="font-display text-3xl lg:text-4xl text-espresso mb-4">
             {t.about.locationsHeading}
           </h2>
