@@ -1,5 +1,5 @@
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import { useUiStore } from '@/store/ui';
 import { useCartStore } from '@/store/cart';
 import { useCustomerAuthStore } from '@/store/customer-auth';
@@ -15,9 +15,12 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
   const { toggleCart, itemCount } = useCartStore();
   const { customer, logout } = useCustomerAuthStore();
+  const navigate = useNavigate();
   const t = useT();
   const { locale, setLocale } = useI18nStore();
   const brandName = locale === 'ka' ? BRAND.nameKa : BRAND.name;
@@ -31,6 +34,24 @@ export function Header() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, [isHome]);
+
+  useEffect(() => {
+    if (!showUserMenu) return;
+    function onClickOutside(e: MouseEvent) {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+        setShowUserMenu(false);
+      }
+    }
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, [showUserMenu]);
+
+  function handleSignOut() {
+    logout();
+    setShowUserMenu(false);
+    closeMobileNav();
+    navigate('/');
+  }
 
   const opaque = true;
   const count = itemCount();
@@ -137,27 +158,49 @@ export function Header() {
 
               {/* Account */}
               {customer ? (
-                <div className="flex items-center gap-3">
-                  <Link
-                    to="/account"
-                    className={`text-sm font-sans font-medium transition-colors ${
+                <div className="relative" ref={userMenuRef}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowUserMenu((v) => !v);
+                      setShowLangMenu(false);
+                    }}
+                    className={`flex items-center gap-1 text-sm font-sans font-medium transition-colors ${
                       opaque
                         ? 'text-espresso/70 hover:text-espresso'
                         : 'text-warm/80 hover:text-warm'
                     }`}
+                    aria-expanded={showUserMenu}
+                    aria-haspopup="menu"
                   >
                     {customer.name.split(' ')[0]}
-                  </Link>
-                  <button
-                    onClick={logout}
-                    className={`text-xs font-sans transition-colors ${
-                      opaque
-                        ? 'text-espresso/40 hover:text-espresso/70'
-                        : 'text-warm/50 hover:text-warm'
-                    }`}
-                  >
-                    {t.nav.signOut}
+                    <ChevronIcon open={showUserMenu} />
                   </button>
+                  {showUserMenu && (
+                    <div className="absolute right-0 top-full mt-2 bg-warm border border-espresso/10 shadow-lg min-w-[180px] py-1">
+                      <Link
+                        to="/account?tab=profile"
+                        onClick={() => setShowUserMenu(false)}
+                        className="block px-4 py-2.5 text-sm font-sans text-espresso/70 hover:text-espresso hover:bg-cream transition-colors"
+                      >
+                        {t.account.tabProfile}
+                      </Link>
+                      <Link
+                        to="/account?tab=orders"
+                        onClick={() => setShowUserMenu(false)}
+                        className="block px-4 py-2.5 text-sm font-sans text-espresso/70 hover:text-espresso hover:bg-cream transition-colors"
+                      >
+                        {t.account.tabOrders}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={handleSignOut}
+                        className="block w-full px-4 py-2.5 text-sm font-sans text-left text-espresso/50 hover:text-espresso hover:bg-cream transition-colors border-t border-espresso/8 mt-1"
+                      >
+                        {t.nav.signOut}
+                      </button>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <button
@@ -240,20 +283,26 @@ export function Header() {
               </div>
 
               {customer ? (
-                <div className="flex items-center justify-between border-t border-espresso/10 pt-2">
+                <div className="border-t border-espresso/10 pt-2 flex flex-col gap-1">
+                  <p className="text-xs font-sans text-espresso/40 px-1 mb-1">{customer.name}</p>
                   <Link
-                    to="/account"
+                    to="/account?tab=profile"
                     onClick={closeMobileNav}
-                    className="text-sm font-sans text-espresso/70"
+                    className="text-sm font-sans text-espresso/70 py-1"
                   >
-                    {t.account.title}
+                    {t.account.tabProfile}
+                  </Link>
+                  <Link
+                    to="/account?tab=orders"
+                    onClick={closeMobileNav}
+                    className="text-sm font-sans text-espresso/70 py-1"
+                  >
+                    {t.account.tabOrders}
                   </Link>
                   <button
-                    onClick={() => {
-                      logout();
-                      closeMobileNav();
-                    }}
-                    className="text-xs font-sans text-espresso/40"
+                    type="button"
+                    onClick={handleSignOut}
+                    className="text-sm font-sans text-espresso/40 py-1 text-left"
                   >
                     {t.nav.signOut}
                   </button>
@@ -284,6 +333,24 @@ export function Header() {
 
       {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
     </>
+  );
+}
+
+function ChevronIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={`transition-transform ${open ? 'rotate-180' : ''}`}
+    >
+      <path d="M6 9l6 6 6-6" />
+    </svg>
   );
 }
 

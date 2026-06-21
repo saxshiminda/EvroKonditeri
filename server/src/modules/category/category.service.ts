@@ -1,12 +1,24 @@
+import { randomUUID } from 'node:crypto';
 import { prisma } from '../../lib/prisma.js';
 import { AppError } from '../../middleware/app-error.js';
+
+/** Latin letters, digits, and Georgian Mkhedruli (U+10A0–U+10FF). */
+const SLUG_UNSAFE = /[^a-z0-9\u10A0-\u10FF]+/g;
 
 export function slugify(name: string): string {
   return name
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9]+/g, '-')
+    .replace(SLUG_UNSAFE, '-')
+    .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
+}
+
+function buildSlug(name: string, id?: string): string {
+  const slug = slugify(name);
+  if (slug) return slug;
+  const suffix = id ?? randomUUID().slice(0, 8);
+  return `cat-${suffix}`;
 }
 
 const categoryInclude = {
@@ -30,7 +42,7 @@ export async function listPublicCategories() {
 }
 
 export async function createCategory(name: string) {
-  const slug = slugify(name);
+  const slug = buildSlug(name);
   const existing = await prisma.category.findFirst({
     where: { OR: [{ name }, { slug }] },
   });
@@ -41,7 +53,7 @@ export async function createCategory(name: string) {
 }
 
 export async function updateCategory(id: string, name: string) {
-  const slug = slugify(name);
+  const slug = buildSlug(name, id);
   const existing = await prisma.category.findFirst({
     where: {
       OR: [{ name }, { slug }],

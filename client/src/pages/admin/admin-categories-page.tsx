@@ -7,6 +7,8 @@ import {
   useDeleteCategory,
 } from '@/features/admin';
 import { useT } from '@/i18n';
+import { getApiErrorMessage } from '@/lib/get-api-error-message';
+import { toast } from '@/lib/toast';
 import type { CategoryWithCount } from '@/types';
 
 export function AdminCategoriesPage() {
@@ -23,8 +25,13 @@ export function AdminCategoriesPage() {
   async function handleCreate(e: React.FormEvent) {
     e.preventDefault();
     if (!newName.trim()) return;
-    await createCategory.mutateAsync(newName.trim());
-    setNewName('');
+    try {
+      await createCategory.mutateAsync(newName.trim());
+      setNewName('');
+      toast.success(t.admin.categories.created);
+    } catch (err) {
+      toast.error(getApiErrorMessage(err, t));
+    }
   }
 
   function startEdit(cat: CategoryWithCount) {
@@ -34,16 +41,22 @@ export function AdminCategoriesPage() {
 
   async function saveEdit(id: string) {
     if (!editName.trim()) return;
-    await updateCategory.mutateAsync({ id, name: editName.trim() });
-    setEditingId(null);
+    try {
+      await updateCategory.mutateAsync({ id, name: editName.trim() });
+      setEditingId(null);
+      toast.success(t.admin.categories.updated);
+    } catch (err) {
+      toast.error(getApiErrorMessage(err, t));
+    }
   }
 
   async function handleDelete(id: string) {
     if (!confirm(t.admin.categories.confirmDelete)) return;
     try {
       await deleteCategory.mutateAsync(id);
-    } catch {
-      alert(t.admin.categories.cannotDelete);
+      toast.success(t.admin.categories.deleted);
+    } catch (err) {
+      toast.error(getApiErrorMessage(err, t));
     }
   }
 

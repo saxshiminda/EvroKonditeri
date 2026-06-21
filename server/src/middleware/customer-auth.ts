@@ -1,10 +1,27 @@
 import type { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
+import { prisma } from '../lib/prisma.js';
 
 interface CustomerJwtPayload {
   customerId: string;
   email: string;
+}
+
+async function attachCustomerFromToken(req: Request, token: string): Promise<boolean> {
+  try {
+    const payload = jwt.verify(token, env.customerJwtSecret) as CustomerJwtPayload;
+    const customer = await prisma.customer.findUnique({
+      where: { id: payload.customerId },
+      select: { id: true, email: true },
+    });
+    if (!customer) return false;
+    req.customerId = customer.id;
+    req.customerEmail = customer.email;
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 declare global {
@@ -18,28 +35,27 @@ declare global {
 }
 
 /** Attaches customer identity if a valid customer JWT is present; never blocks. */
-export function optionalCustomerAuth(req: Request, _res: Response, next: NextFunction): void {
+export async function optionalCustomerAuth(
+  req: Request,
+  _res: Response,
+  next: NextFunction
+): Promise<void> {
   const header = req.headers['authorization'];
   const token = header?.startsWith('Bearer ') ? header.slice(7) : undefined;
 
-  if (!token) {
-    next();
-    return;
-  }
-
-  try {
-    const payload = jwt.verify(token, env.customerJwtSecret) as CustomerJwtPayload;
-    req.customerId = payload.customerId;
-    req.customerEmail = payload.email;
-  } catch {
-    // Invalid/expired token — treat as guest
+  if (token) {
+    await attachCustomerFromToken(req, token);
   }
 
   next();
 }
 
 /** Blocks requests without a valid customer JWT. */
-export function requireCustomerAuth(req: Request, res: Response, next: NextFunction): void {
+export async function requireCustomerAuth(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
   const header = req.headers['authorization'];
   const token = header?.startsWith('Bearer ') ? header.slice(7) : undefined;
 
@@ -48,12 +64,11 @@ export function requireCustomerAuth(req: Request, res: Response, next: NextFunct
     return;
   }
 
-  try {
-    const payload = jwt.verify(token, env.customerJwtSecret) as CustomerJwtPayload;
-    req.customerId = payload.customerId;
-    req.customerEmail = payload.email;
-    next();
-  } catch {
+  const ok = await attachCustomerFromToken(req, token);
+  if (!ok) {
     res.status(401).json({ error: 'Invalid or expired token' });
+    return;
   }
+
+  next();
 }

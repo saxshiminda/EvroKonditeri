@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { setCustomerAuthToken } from '@/lib/api';
-import type { Customer } from '@/types';
+import { api, setCustomerAuthToken } from '@/lib/api';
+import type { ApiResponse, Customer } from '@/types';
 
 const TOKEN_KEY = 'slice_customer_token';
 const CUSTOMER_KEY = 'slice_customer';
@@ -12,6 +12,12 @@ interface CustomerAuthState {
   updateCustomer: (customer: Customer) => void;
   logout: () => void;
   hydrate: () => void;
+}
+
+function clearStoredAuth() {
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem(CUSTOMER_KEY);
+  setCustomerAuthToken(null);
 }
 
 export const useCustomerAuthStore = create<CustomerAuthState>((set) => ({
@@ -31,17 +37,32 @@ export const useCustomerAuthStore = create<CustomerAuthState>((set) => ({
   },
 
   logout: () => {
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(CUSTOMER_KEY);
-    setCustomerAuthToken(null);
+    clearStoredAuth();
     set({ token: null, customer: null });
   },
 
   hydrate: () => {
     const token = localStorage.getItem(TOKEN_KEY);
     const raw = localStorage.getItem(CUSTOMER_KEY);
-    const customer = raw ? (JSON.parse(raw) as Customer) : null;
-    if (token) setCustomerAuthToken(token);
-    set({ token, customer });
+    const cached = raw ? (JSON.parse(raw) as Customer) : null;
+
+    if (!token) {
+      set({ token: null, customer: null });
+      return;
+    }
+
+    setCustomerAuthToken(token);
+    set({ token, customer: cached });
+
+    void api
+      .get<ApiResponse<Customer>>('/api/customers/me')
+      .then(({ data }) => {
+        localStorage.setItem(CUSTOMER_KEY, JSON.stringify(data));
+        set({ token, customer: data });
+      })
+      .catch(() => {
+        clearStoredAuth();
+        set({ token: null, customer: null });
+      });
   },
 }));

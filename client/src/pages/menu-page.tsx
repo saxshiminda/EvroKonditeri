@@ -37,18 +37,9 @@ export function MenuPage() {
 
   return (
     <main className="min-h-screen pt-16 lg:pt-20">
-      <section className="py-16 lg:py-24 px-6 lg:px-8 max-w-6xl mx-auto">
-        <p className="font-sans text-xs tracking-widest uppercase text-espresso/40 mb-3">
-          {t.menu.ourCakes}
-        </p>
-        <h1 className="font-display text-5xl lg:text-6xl text-espresso mb-4">{t.menu.heading}</h1>
-        <p className="font-sans text-base text-espresso/60 max-w-lg leading-relaxed">
-          {t.menu.tagline}
-        </p>
-      </section>
-
       <section className="sticky top-16 lg:top-20 z-10 bg-warm/95 backdrop-blur-sm border-b border-espresso/8">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-4">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-3">
+          <h1 className="sr-only">{t.menu.heading}</h1>
           <MenuToolbar
             categories={categories}
             search={search}
@@ -61,7 +52,7 @@ export function MenuPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 py-6 lg:py-8">
         {isLoading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
             {Array.from({ length: SKELETON_COUNT }, (_, i) => (
@@ -87,9 +78,7 @@ export function MenuPage() {
 
         {data && displayedCakes.length > 0 && (
           <>
-            <p className="font-sans text-xs text-espresso/40 mb-8">
-              {displayedCakes.length} {t.menu.of} {data.total}{' '}
-              {data.total === 1 ? t.menu.showing : t.menu.showingPlural}
+            <p className="font-sans text-xs text-espresso/40 mb-6">
               {categoryLabel ? ` ${t.menu.in} ${categoryLabel}` : ''}
               {search ? ` ${t.menu.matching} "${search}"` : ''}
             </p>

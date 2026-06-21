@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
+import { ToastContainer } from '@/components/ui/toast-container';
 import { queryClient } from '@/lib/query-client';
 import { router } from '@/routes';
 import { useAuthStore } from '@/store/auth';
@@ -20,6 +21,7 @@ createRoot(root).render(
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <ToastContainer />
       </QueryClientProvider>
     </ErrorBoundary>
   </StrictMode>

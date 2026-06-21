@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { api } from '@/lib/api';
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
+import { api, ApiError } from '@/lib/api';
 import { useCustomerAuthStore } from '@/store/customer-auth';
 import { useT } from '@/i18n';
 import { Spinner, Button } from '@/components/ui';
@@ -163,6 +163,12 @@ function ProfileTab({ customer }: { customer: Customer }) {
       setSaved(true);
       setTimeout(() => setSaved(false), 2500);
     },
+    onError: (err) => {
+      if (err instanceof ApiError && err.status === 401) {
+        logout();
+        navigate('/');
+      }
+    },
   });
 
   function handleSave(e: React.FormEvent) {
@@ -263,7 +269,11 @@ function ProfileTab({ customer }: { customer: Customer }) {
               />
             </div>
 
-            {update.isError && <p className="font-sans text-sm text-red-600">{t.common.error}</p>}
+            {update.isError && (
+              <p className="font-sans text-sm text-red-600">
+                {update.error instanceof ApiError ? update.error.message : t.common.error}
+              </p>
+            )}
 
             <div className="flex gap-3 pt-1">
               <Button type="submit" loading={update.isPending}>
@@ -317,11 +327,44 @@ function Field({
 
 export function AccountPage() {
   const t = useT();
-  const { customer } = useCustomerAuthStore();
-  const [tab, setTab] = useState<Tab>('orders');
+  const { customer, logout, updateCustomer } = useCustomerAuthStore();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tab: Tab = searchParams.get('tab') === 'profile' ? 'profile' : 'orders';
+
+  function setTab(next: Tab) {
+    if (next === 'profile') {
+      setSearchParams({ tab: 'profile' });
+    } else {
+      setSearchParams({});
+    }
+  }
+
+  const { isLoading: profileLoading, isError: profileError } = useQuery({
+    queryKey: ['customer-profile'],
+    queryFn: async () => {
+      const res = await api.get<ApiResponse<Customer>>('/api/customers/me');
+      updateCustomer(res.data);
+      return res.data;
+    },
+    enabled: !!customer,
+    retry: false,
+  });
 
   if (!customer) {
     return <Navigate to="/" replace />;
+  }
+
+  if (profileError) {
+    logout();
+    return <Navigate to="/" replace />;
+  }
+
+  if (profileLoading) {
+    return (
+      <main className="min-h-screen pt-16 lg:pt-20 flex justify-center items-center">
+        <Spinner size="lg" />
+      </main>
+    );
   }
 
   return (

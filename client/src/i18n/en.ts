@@ -332,6 +332,10 @@ export const en = {
       actions: 'Actions',
       confirmDelete: 'Delete this category? Cakes must be reassigned first.',
       cannotDelete: 'Cannot delete a category that has cakes assigned.',
+      nameExists: 'A category with this name already exists.',
+      created: 'Category created.',
+      updated: 'Category updated.',
+      deleted: 'Category deleted.',
     },
     shopOrders: {
       title: 'Shop Orders',

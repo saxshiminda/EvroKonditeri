@@ -53,6 +53,16 @@ export async function initiateCheckout(input: CreateShopOrderInput, customerId?:
 
   const total = subtotal + deliveryFee;
 
+  // Link order to account only when the customer still exists (stale JWTs after DB reset).
+  let linkedCustomerId: string | undefined;
+  if (customerId) {
+    const customer = await prisma.customer.findUnique({
+      where: { id: customerId },
+      select: { id: true },
+    });
+    linkedCustomerId = customer?.id;
+  }
+
   // 3. Create a PENDING order
   const order = await prisma.shopOrder.create({
     data: {
@@ -68,7 +78,7 @@ export async function initiateCheckout(input: CreateShopOrderInput, customerId?:
       pickupSlot: input.pickupSlot,
       deliveryAddress: input.deliveryAddress,
       branchId: input.branchId || undefined,
-      customerId: customerId || undefined,
+      customerId: linkedCustomerId,
       status: 'PENDING',
       items: {
         create: input.items.map((item) => {

@@ -21,6 +21,14 @@ class ApiError extends Error {
   }
 }
 
+function tokenForPath(path: string): string | null {
+  if (path.startsWith('/api/admin')) return authToken;
+  if (path.startsWith('/api/customers') || path.startsWith('/api/shop/checkout')) {
+    return customerToken;
+  }
+  return customerToken ?? authToken;
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const isFormData = init?.body instanceof FormData;
   const headers: Record<string, string> = {
@@ -28,8 +36,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     ...((init?.headers as Record<string, string>) ?? {}),
   };
 
-  // Admin token takes precedence; fall back to customer token
-  const token = authToken ?? customerToken;
+  const token = tokenForPath(path);
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
   }
