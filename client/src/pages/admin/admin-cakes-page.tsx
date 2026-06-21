@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button, Input, Spinner } from '@/components/ui';
 import {
   useAdminCakes,
@@ -34,6 +34,13 @@ export function AdminCakesPage() {
   const [editing, setEditing] = useState<Cake | null>(null);
   const [form, setForm] = useState<CakeInput>(emptyForm);
   const [showForm, setShowForm] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (showForm) {
+      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [showForm, editing]);
 
   function openCreate() {
     setEditing(null);
@@ -97,6 +104,7 @@ export function AdminCakesPage() {
 
       {showForm && (
         <form
+          ref={formRef}
           onSubmit={handleSubmit}
           className="bg-cream p-6 lg:p-8 mb-8 border border-espresso/10 space-y-4 max-w-4xl mx-auto"
         >
